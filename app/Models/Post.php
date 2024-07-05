@@ -36,18 +36,20 @@ class Post extends Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
 
+
+     //En post esta el campo user_id de foranea por lo cual la funcion recibe con belognsTo
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
 
-    public function categories(): BelongsToMany 
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
     }
 
-    public function shortBody($words =30): string 
+    public function shortBody($words =30): string
     {
         return Str::words(strip_tags($this->body), $words);
     }
@@ -63,7 +65,6 @@ class Post extends Model
         if (str_starts_with($this->thumbnail, 'http')) {
             return $this->thumbnail;
         }
-
         return '/storage/' . $this->thumbnail;
     }
 
@@ -81,4 +82,3 @@ class Post extends Model
     }
 
 }
-    
