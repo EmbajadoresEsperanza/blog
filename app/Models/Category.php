@@ -23,6 +23,8 @@ class Category extends Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
 
+
+    // relation (muchos a mucho entre categoria y post) --> al ser muchos a muchos se crea otra entidad category_post 
     public function posts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class);
